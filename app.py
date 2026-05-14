@@ -128,7 +128,7 @@ def generate_random_name(name_prefix):
 def generate_custom_password():
     characters = string.ascii_letters + string.digits
     random_part = ''.join(random.choice(characters) for _ in range(9)).upper()
-    return f"DANGER-{random_part}-CORE"
+    return f"BLINX-{random_part}-2026"
 
 # ---------------- Account creation (register/token) ---------------- #
 def create_single_account(args):
@@ -555,12 +555,12 @@ def generate_accounts():
     print(f"Starting creation of {count} FULL LOGIN accounts for region {region} with name prefix {name}")
     
     # Use thread pool with limited workers
-    max_workers = 5  # Reduced for stability
+    max_workers = 15  # Reduced for stability
     
     # Create accounts with retry mechanism until we get exactly the requested count of FULL LOGIN accounts
     results = []
     attempts = 0
-    max_total_attempts = count * 10
+    max_total_attempts = count * 1
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         while len(results) < count and attempts < max_total_attempts:
